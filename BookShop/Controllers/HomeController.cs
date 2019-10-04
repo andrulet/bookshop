@@ -23,6 +23,18 @@ namespace BookShop.Controllers
             double s = a * b / 2;
             return $"<h3>Площадь треугольника равна {s}</h3>";
         }
+        [HttpGet]
+        public ActionResult GetBook()
+        {
+            return View();
+        }
+        [HttpPost]
+        public string PostBook()
+        {
+            string title = Request.Form["title"];
+            string author = Request.Form["author"];
+            return $"<h2>Название книги {title} и ее автор {author}</h2>";
+        }
         public ActionResult Index()
         {
             var books = db.Books;
