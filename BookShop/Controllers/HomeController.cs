@@ -4,13 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookShop.Models;
+using BookShop.Utill;
 
 namespace BookShop.Controllers
 {
     public class HomeController : Controller
     {
         BookContext db =new BookContext();
-
+        
+        public ActionResult GetImage()
+        {
+            string pathimage = "../Content/Image/Index.jpg";
+            return new ImageResult(pathimage);
+        }
+        public ActionResult GetHtml()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetHtml(string html)
+        {
+            return new HtmlResult(html);
+        }
         public string Square(int a, int b)
         {
             double s = a * b / 2;
